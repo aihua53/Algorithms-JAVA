@@ -1,10 +1,11 @@
 package algorithm.java;
 
+import java.util.HashMap;
 
 public class Others{
 	/**
 	 * leetcode #7
-	 * 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数
+	 * 锟叫讹拷一锟斤拷锟斤拷锟斤拷锟角凤拷锟角伙拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷指锟斤拷锟津（达拷锟斤拷锟斤拷锟揭ｏ拷锟酵碉拷锟津（达拷锟斤拷锟斤拷锟襟）讹拷锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷
 	 */
 	public static boolean isPalindrome_1(int x) {
 		String str1 = Integer.toString(x);
@@ -27,13 +28,4 @@ public class Others{
 		return sBuffer.toString().equals(str1);
 	}
 	
-	
-	/**
-	 * leetcode #13
-	 * 罗马数字转整数
-	 * 
-	 */
-	public static int romanToInt(String s) {
-		return 0;
-	}
 }
