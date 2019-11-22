@@ -28,4 +28,23 @@ public class Others{
 		return sBuffer.toString().equals(str1);
 	}
 	
+
+	/**leetcode #14
+	 * 最长公共前缀
+	 * @param strs
+	 * @return
+	 */
+    public static String longestCommonPrefix(String[] strs) {
+		if(strs.length == 0) {
+			return "";
+		}
+		String prefix = strs[0];
+		for(String str:strs) {
+			while(str.indexOf(prefix) != 0) {
+				prefix = prefix.substring(0, prefix.length()-1);
+			}
+		}
+		return prefix;
+
+    }
 }
