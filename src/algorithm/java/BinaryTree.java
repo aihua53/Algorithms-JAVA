@@ -26,18 +26,43 @@ class BinaryTree{
 	
 
 	
-	/*
-	 * traverse
+	/* 
+	 * leetcode #94
+	 * 二叉树的中序遍历
+	 * infix traverse
 	 */
 	
-	public void infixorder(TreeNode current) {
+	public void infixOrder(TreeNode current) {
 		if(current != null) {
+			infixOrder(current.left);
 			System.out.print(current.value+" ");
-			infixorder(current.left);
-			infixorder(current.right);
+			infixOrder(current.right);
 		}
 	}
 	
+	/*
+	 * pre traverse
+	 */
+	
+	public void preOrder(TreeNode current) {
+		if(current != null) {
+			System.out.print(current.value+" ");
+			preOrder(current.left);
+			preOrder(current.right);
+		}
+	}
+	
+	/*
+	 * post traverse
+	 */
+	
+	public void postOrder(TreeNode current) {
+		if(current != null) {
+			postOrder(current.left);
+			postOrder(current.right);
+			System.out.print(current.value+" ");
+		}
+	}
 	/*
 	 * add node
 	 */
@@ -59,7 +84,8 @@ class BinaryTree{
 	
 	
 	/*
-	 * is the same?
+	 * leetcode #100
+	 * 相同的数
 	 */
 	public static boolean isSameTree(TreeNode p, TreeNode q) {
 		if(p != null && q != null) {
