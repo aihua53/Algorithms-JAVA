@@ -28,7 +28,7 @@ class BinaryTree{
 	
 	/* 
 	 * leetcode #94
-	 * ¶þ²æÊ÷µÄÖÐÐò±éÀú
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * infix traverse
 	 */
 	
@@ -85,7 +85,7 @@ class BinaryTree{
 	
 	/*
 	 * leetcode #100
-	 * ÏàÍ¬µÄÊý
+	 * ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static boolean isSameTree(TreeNode p, TreeNode q) {
 		if(p != null && q != null) {
@@ -103,7 +103,7 @@ class BinaryTree{
 	
 	/*
 	 * leetcode #101
-	 * ¶Ô³Æ¶þ²æÊ÷
+	 * ï¿½Ô³Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static boolean isSymmetric(TreeNode root) {
 		return isMirror(root,root);
@@ -122,4 +122,23 @@ class BinaryTree{
 		return false;
 		
 	}
+	
+	/*
+	 * leetcode #104
+	 * äºŒå‰æ ‘çš„æœ€å¤§æ·±åº¦
+	 */
+	public int maxDepth(TreeNode root) {
+		int leftDepth = 0;
+		int rightDepth = 0;
+		if(root.left == null && root.right == null)
+			return 0;
+		if(root.left != null) {
+			leftDepth = maxDepth(root.left);
+		}
+		if(root.right != null) {
+			rightDepth = maxDepth(root.right);
+		}
+		return (leftDepth>rightDepth)?leftDepth+1:rightDepth+1;
+	}
+	
 }
