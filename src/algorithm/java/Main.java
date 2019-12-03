@@ -4,15 +4,16 @@ import java.util.*;
 
 public class Main{
 	public static void main(String[] args) {
-		//PrintGraph.printDiamond(9);
-		BinaryTree bt = new BinaryTree(6);
-		bt.addNode(bt.getRoot(), 1);
-		bt.addNode(bt.getRoot(), 3);
-		bt.addNode(bt.getRoot(), 4);
-		bt.addNode(bt.getRoot(), 5);
-		bt.addNode(bt.getRoot(), 8);
+        BinaryTree bt = new BinaryTree(0);
+//		bt.addNode(bt.getRoot(), -3);
+//		bt.addNode(bt.getRoot(), -10);
+//		bt.addNode(bt.getRoot(), 9);
+//		bt.addNode(bt.getRoot(), 5);
+//		bt.preOrder(bt.getRoot());
 		
-		System.out.println(bt.maxDepth(bt.getRoot()));
+        int[] a = {-10,-3,0,5,9};
+        BinaryTree.TreeNode root = bt.sortedArrayToBST(a);
+        bt.preOrder(root);
 		
 
 	}

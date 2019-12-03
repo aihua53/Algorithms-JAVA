@@ -1,10 +1,14 @@
 package algorithm.java;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import com.sun.javafx.collections.ArrayListenerHelper;
 
 class BinaryTree{
 	
-	private TreeNode root;	
+	private TreeNode root;
+	private Object TreeNode;	
 
 	class TreeNode{
 		private int value;
@@ -28,7 +32,7 @@ class BinaryTree{
 	
 	/* 
 	 * leetcode #94
-	 * ���������������
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�
 	 * infix traverse
 	 */
 	
@@ -85,7 +89,7 @@ class BinaryTree{
 	
 	/*
 	 * leetcode #100
-	 * ��ͬ����
+	 * 锟斤拷同锟斤拷锟斤拷
 	 */
 	public static boolean isSameTree(TreeNode p, TreeNode q) {
 		if(p != null && q != null) {
@@ -103,7 +107,7 @@ class BinaryTree{
 	
 	/*
 	 * leetcode #101
-	 * �Գƶ�����
+	 * 锟皆称讹拷锟斤拷锟斤拷
 	 */
 	public static boolean isSymmetric(TreeNode root) {
 		return isMirror(root,root);
@@ -125,7 +129,7 @@ class BinaryTree{
 	
 	/*
 	 * leetcode #104
-	 * 二叉树的最大深度
+	 * 浜屽弶鏍戠殑鏈�澶ф繁搴�
 	 */
 	public int maxDepth(TreeNode root) {
 		int leftDepth = 0;
@@ -141,4 +145,36 @@ class BinaryTree{
 		return (leftDepth>rightDepth)?leftDepth+1:rightDepth+1;
 	}
 	
+
+	/*
+     * leetcode #108
+	 * 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树
+	 */
+	public TreeNode sortedArrayToBST(int[] nums) {
+		TreeNode tN = new TreeNode(nums[nums.length/2]);
+		TreeNode tNL,tNR;
+		int[] left,right;
+		if(nums.length<2) {
+			return tN;
+		}else if(nums.length<3) {
+			tNL = new TreeNode(nums[0]);
+			tN.left = tNL;
+		}else {
+			left = new int[nums.length/2];
+			for(int i=0;i<nums.length/2;i++) {
+				left[i] = nums[i];
+			}
+			tNL = sortedArrayToBST(left);
+			tN.left = tNL;
+
+			int length = (nums.length%2!=0)?(nums.length/2):(nums.length/2-1);
+			right = new int[length];
+			for(int i=0;i<length;i++) {
+				right[i] = nums[nums.length/2+1+i];
+			}
+			tNR = sortedArrayToBST(right);
+			tN.right = tNR;
+		}
+		return tN;
+	}
 }
