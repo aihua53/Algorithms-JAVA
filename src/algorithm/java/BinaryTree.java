@@ -192,4 +192,56 @@ class BinaryTree{
 		node.right = sortedArrayToBST(nums,mid+1,end);
 		return node;
 	}
+
+	/*
+	 * leetcode 110
+	 * 判断是否为平衡二叉树
+	 */
+	public boolean isBalanced(TreeNode root) {
+		return Math.abs(maxDepth(root.left) - maxDepth(root.left))>1?false:true;
+	}
+
+
+	/*
+	 * leetcode 111
+	 * 找出二叉树的最小深度
+	 */
+	public int minDepth(TreeNode root) {
+		if(root.left==null&&root.right ==null) {
+			return 0;
+		}
+		int left = 0;
+		int right = 0;
+		if(root.left != null) {
+			left = minDepth(root.left);
+		}
+		if(root.right != null) {
+			right = minDepth(root.right);
+		}
+		return left<right?left+1:right+1;
+	}
+
+	/*
+	 * leetcode 112
+	 * 路径总和
+	 */
+	public boolean hasPathSum(TreeNode root, int sum) {
+		ArrayList array = new ArrayList<Integer>();
+		treeSum(root,0,array);
+		System.out.println(array);
+		return array.contains(new Integer(sum));
+	}
+
+	public void treeSum(TreeNode root,int currentSum,ArrayList<Integer> array) {
+		if(root == null) {
+			return;
+		}
+		currentSum +=root.value;
+		if(root.left == null&&root.right ==null) {
+			array.add(new Integer(currentSum));
+		}
+		treeSum(root.left,currentSum,array);
+		treeSum(root.right,currentSum,array);
+	}
+
 }
