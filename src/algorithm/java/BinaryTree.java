@@ -150,7 +150,7 @@ class BinaryTree{
      * leetcode #108
 	 * 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树
 	 */
-	public TreeNode sortedArrayToBST(int[] nums) {
+	public TreeNode sortedArrayToBST_1(int[] nums) {
 		TreeNode tN = new TreeNode(nums[nums.length/2]);
 		TreeNode tNL,tNR;
 		int[] left,right;
@@ -164,7 +164,7 @@ class BinaryTree{
 			for(int i=0;i<nums.length/2;i++) {
 				left[i] = nums[i];
 			}
-			tNL = sortedArrayToBST(left);
+			tNL = sortedArrayToBST_1(left);
 			tN.left = tNL;
 
 			int length = (nums.length%2!=0)?(nums.length/2):(nums.length/2-1);
@@ -172,9 +172,24 @@ class BinaryTree{
 			for(int i=0;i<length;i++) {
 				right[i] = nums[nums.length/2+1+i];
 			}
-			tNR = sortedArrayToBST(right);
+			tNR = sortedArrayToBST_1(right);
 			tN.right = tNR;
 		}
 		return tN;
+	}
+	
+	public TreeNode sortedArrayToBST_2(int[] nums) {
+		return sortedArrayToBST(nums,0,nums.length);
+	}
+	
+	public TreeNode sortedArrayToBST(int[] nums,int start, int end) {
+		if(start == end) {
+			return null;
+		}
+		int mid = (start+end)>>>1;
+		TreeNode node = new TreeNode(nums[mid]);
+		node.left = sortedArrayToBST(nums,start,mid);
+		node.right = sortedArrayToBST(nums,mid+1,end);
+		return node;
 	}
 }
