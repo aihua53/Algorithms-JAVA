@@ -3,7 +3,7 @@ package algorithm.java;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.sun.javafx.collections.ArrayListenerHelper;
+//import com.sun.javafx.collections.ArrayListenerHelper;
 
 class BinaryTree{
 	
