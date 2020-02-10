@@ -1,5 +1,7 @@
 package algorithm.java;
 
+import java.util.Vector;
+
 public class Array {
 	public static int[] plusOne(int[] digits) {
 		int l = digits.length;
@@ -23,6 +25,36 @@ public class Array {
 		}else {
 			return digits;
 		}
+	}
+
+
+	public static int removeDuplicates(int[] nums) {
+		return removeFirstDuplicate(nums,nums.length);
+    }
+
+	public static int removeFirstDuplicate(int[]nums,int length) {
+		for(int i=0;i<length-1;i++) {
+			if(nums[i] == nums[i+1]) {
+				for(int j=i;j<length-1;j++) {
+					nums[j] = nums[j+1];
+				}
+				length--;
+				length = removeFirstDuplicate(nums,length);
+				break;
+			}
+		}
+		return length;
+	}
+
+	public static int removeDuplicates_2(int[] nums) {
+		int i = 0;
+		for(int j=1;j<nums.length;j++) {
+			if(nums[i] != nums[j]) {
+				i++;
+				nums[i] = nums[j];
+			}
+		}
+		return i+1;
 	}
 
 }
