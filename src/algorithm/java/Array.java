@@ -27,6 +27,33 @@ public class Array {
 		}
 	}
 
+	public static int[] plusOne_1(int[] digits) {
+		int l = digits.length;
+		boolean flag = true;
+		int i = 1;
+		while(flag == true) {
+			if(i<=l) {
+				if(digits[l-i] == 9) {
+					digits[l-i] = 0;
+					i++;
+				}else {
+					digits[l-i] = digits[l-i]+1;
+					flag = false;
+					break;
+				}
+			}else {
+				break;
+			}
+
+		}
+		if(flag == true) {
+			int [] value = new int[l+1];
+			value[0] = 1;
+			return value;
+		}
+		return digits;
+	}
+
 
 	public static int removeDuplicates(int[] nums) {
 		return removeFirstDuplicate(nums,nums.length);
