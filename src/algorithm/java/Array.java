@@ -98,4 +98,32 @@ public class Array {
 		}
 	}
 
+	//leetcode 11
+	public static int maxArea(int[] height) {
+		int maxArea = 0;
+		int i =0;
+		int j = height.length - 1;
+		while(i != j) {
+			maxArea = Math.max(maxArea, (j-i)*Math.min(height[i], height[j]));
+			if(height[i] < height[j]) {
+				i++;
+			}else {
+				j--;
+			}
+		}
+		return maxArea;
+	}
+
+	//leetcode 70
+	public static int climbStairs(int n) {
+		int[] a = new int[n+1];
+		a[0] = 1;
+		a[1] = 1;
+		for(int i = 2;i<=n;i++) {
+			a[i] = a[i-1] + a[i-2];
+		}
+		return a[n];
+	}
+
+
 }
