@@ -152,4 +152,37 @@ public class Array {
 	  }
 
 
+	//leetcode #189
+	public static void rotate(int[] a, int k) {
+		int temp;
+		for(int i=0;i<k;i++) {
+			int l = a.length;
+			if(l == 0) {
+				return;
+			}
+			temp = a[l-1];
+			while(l != 1) {
+				a[l-1] = a[l-2];
+				l--;
+			}
+			a[0] = temp;
+		}
+	}
+
+	public static void rotate_2(int[] a, int k) {
+		revert(a,0,a.length-1);
+		revert(a,0,k-1);
+		revert(a,k,a.length-1);
+	}
+
+	public static void revert(int[] a, int m, int n) {
+		int temp;
+		while(m<n) {
+			temp = a[n];
+			a[n] = a[m];
+			a[m] = temp;
+			m++;
+			n--;
+		}
+	}
 }
