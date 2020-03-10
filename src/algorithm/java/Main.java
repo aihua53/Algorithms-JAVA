@@ -4,17 +4,27 @@ import java.util.*;
 
 public class Main{
 	public static void main(String[] args) {
-        BinaryTree bt = new BinaryTree(0);
-//		bt.addNode(bt.getRoot(), -3);
-//		bt.addNode(bt.getRoot(), -10);
-//		bt.addNode(bt.getRoot(), 9);
-//		bt.addNode(bt.getRoot(), 5);
-//		bt.preOrder(bt.getRoot());
+
+		SinglyLinkedList sll = new SinglyLinkedList();
+		ListNode l1 = new ListNode(1);
+		ListNode l2 = new ListNode(1);
+		ListNode node2 = new ListNode(2);
+		ListNode node3 = new ListNode(3);
+		ListNode node4 = new ListNode(4);
 		
-        int[] a = {-10,-3,0,5,9};
-        BinaryTree.TreeNode root = bt.sortedArrayToBST(a);
-        bt.preOrder(root);
+		sll.insert(l1, node2, 2);
+		sll.insert(l1, node4, 3);
 		
+		sll.insert(l2, node3, 2);
+		sll.insert(l2, node4, 3);
+
+		SinglyLinkedList.printList(l1);
+		System.out.println("***");
+		SinglyLinkedList.printList(l2);
+		System.out.println("***");
+		
+		ListNode l = sll.mergeTwoLists(l1, l2);
+		SinglyLinkedList.printList(l);
 
 	}
 }

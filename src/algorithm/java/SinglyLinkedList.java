@@ -6,6 +6,14 @@ import algorithm.java.ListNode;;
 public class SinglyLinkedList{
 
 
+	public static void printList(ListNode head) {
+		ListNode n = head;
+		while( n!= null) {
+			System.out.println(n.getData());
+			n = n.getNext();
+		}
+	}
+
 	public int listLength(ListNode head) {
 		int l = 0;
 		ListNode listNode = head;
@@ -65,5 +73,32 @@ public class SinglyLinkedList{
 		}
 	}
 	
+
+	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+		ListNode head = l1;
+		ListNode p = l1;
+		ListNode temp = l2;
+		while(l1 != null && l2 != null) {
+			if(l1.getData()<l2.getData()) {
+				p = l1;
+				l1 = l1.getNext();
+			}else {
+				if(head == l1) {
+					head = l2;
+				}else {
+					p.setNext(l2);
+				}
+				temp = l2.getNext();
+				l2.setNext(l1);
+				p = l2;
+				l2 = temp;
+			}
+
+		}
+		if(l1 == null) {
+			p.setNext(l2);
+		}
+		return head;
+	}
 }
 
