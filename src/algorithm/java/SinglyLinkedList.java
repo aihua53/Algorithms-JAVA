@@ -100,5 +100,30 @@ public class SinglyLinkedList{
 		}
 		return head;
 	}
+
+    public ListNode mergeTwoLists_2(ListNode l1, ListNode l2) {
+        // maintain an unchanging reference to node ahead of the return node.
+        ListNode prehead = new ListNode(-1);
+
+        ListNode prev = prehead;
+        while (l1 != null && l2 != null) {
+            if (l1.getData() <= l2.getData()) {
+                prev.setNext(l1);
+                l1 = l1.getNext();
+            } else {
+                prev.setNext(l2);
+                l2 = l2.getNext();
+            }
+            prev = prev.getNext();
+        }
+
+        // exactly one of l1 and l2 can be non-null at this point, so connect
+        // the non-null list to the end of the merged list.
+        prev.setNext(l1 == null ? l2 : l1);
+
+        return prehead.getNext();
+    }
+
+
 }
 
