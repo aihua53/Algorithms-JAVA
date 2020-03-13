@@ -124,6 +124,37 @@ public class SinglyLinkedList{
         return prehead.getNext();
     }
 
+	public ListNode mergeTwoLists_3(ListNode l1, ListNode l2) {
+		ListNode head =null;
+		ListNode previous =null;
+		if(l1.getData()<l2.getData()) {
+			head = l1;
+			l1 = l1.getNext();
+		}else {
+			head = l2;
+			l2 = l2.getNext();
+		}
+		previous = head;
+		merge(l1,l2,previous);
+		return head;
+	}
+	public void merge(ListNode n1,ListNode n2,ListNode p) {
+		if(n1 == null) {
+			p.setNext(n2);
+		}else if(n2 == null){
+			p.setNext(n1);
+		}else {
+			if(n1.getData()<n2.getData()) {
+				p.setNext(n1);
+				n1 = n1.getNext();
+			}else {
+				p.setNext(n2);
+				n2 = n2.getNext();
+			}
+			p = p.getNext();
+			merge(n1,n2,p);
+		}
+	}
 
 }
 
