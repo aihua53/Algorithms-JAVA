@@ -156,5 +156,65 @@ public class SinglyLinkedList{
 		}
 	}
 
+	public ListNode swapPairs(ListNode head) {
+		ListNode h = null;
+		ListNode l1 = head;
+		ListNode l2 = null;
+		ListNode temp = null;
+		ListNode pre = null;
+
+		if(l1 != null) {
+			l2 = l1.getNext();
+			h = l2;
+		}
+
+		while(l1!=null && l2!=null) {
+			temp = l2.getNext();
+			l2.setNext(l1);
+			if(pre ==null) {
+				pre = l2;
+			}else {
+				pre.setNext(l2);
+			}
+			pre = l1;
+			l1 = temp;
+			if(l1!=null) {
+				l2 = l1.getNext();
+			}
+		}
+		if(l1 !=null) {
+			pre.setNext(l1);
+			l1.setNext(null);
+		}else {
+			pre.setNext(null);
+		}
+
+		return h;
+	}
+
+	public ListNode swapPairs_2(ListNode head) {
+		ListNode h = null;
+		ListNode n1 = null;
+		ListNode n2 = null;
+		ListNode temp = null;
+		if(head !=null) {
+			n1 = head;
+			n2 = n1.getNext();
+			if(n2 == null) {
+				n1.setNext(null);
+				return n1;
+			}
+		}else {
+			return h;
+		}
+
+		temp = n2.getNext();
+		n2.setNext(n1);
+		n1.setNext(swapPairs_2(temp));
+
+		h = n2;
+		return h;
+	}
+
 }
 
