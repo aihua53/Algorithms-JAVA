@@ -1,5 +1,7 @@
 package algorithm.java;
 
+import java.util.ArrayList;
+
 import algorithm.java.ListNode;;
 
 
@@ -214,6 +216,20 @@ public class SinglyLinkedList{
 
 		h = n2;
 		return h;
+	}
+
+	public int hasCycle(ListNode head) {
+		ArrayList arrayList = new ArrayList();
+		ListNode last = null;
+		while(head != null && arrayList.indexOf(head) == -1) {
+			arrayList.add(head);
+			if(head.getNext() == null) {
+				last = head;
+			}else {
+				head  = head.getNext();
+			}
+		}
+		return arrayList.indexOf(head);
 	}
 
 }
