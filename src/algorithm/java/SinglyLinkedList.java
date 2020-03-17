@@ -1,6 +1,7 @@
 package algorithm.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import algorithm.java.ListNode;;
 
@@ -230,6 +231,20 @@ public class SinglyLinkedList{
 			}
 		}
 		return arrayList.indexOf(head);
+	}
+
+	public int hasCycle_2(ListNode head) {
+		HashMap<ListNode,Integer> map = new HashMap<>();
+		int i = 0;
+		while(head != null) {
+			if(map.get(head) != null) {
+				return map.get(head);
+			}
+			map.put(head, i);
+			i++;
+			head = head.getNext();
+		}
+		return -1;
 	}
 
 }
