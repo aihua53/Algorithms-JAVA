@@ -2,6 +2,7 @@ package algorithm.java;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 import algorithm.java.ListNode;;
 
@@ -245,6 +246,49 @@ public class SinglyLinkedList{
 			head = head.getNext();
 		}
 		return -1;
+	}
+
+	public ListNode reverseList(ListNode h) {
+		ListNode head = h;
+		ListNode next = null;
+		ListNode temp = null;
+		if(head != null) {
+			next = head.getNext();
+			head.setNext(null);
+		}
+		while(next != null) {
+			temp = next.getNext();
+			next.setNext(head);
+			head = next;
+			next = temp;
+		}
+		return head;
+	}
+
+	public ListNode reverseList_2(ListNode h) {
+		ListNode head = h;
+		ListNode temp = null;
+		Stack stack = new Stack();
+		while(head != null) {
+			temp = head;
+			head = head.getNext();
+			temp.setNext(null);
+			stack.push(temp);
+
+		}
+		head = null;
+
+		while(!stack.empty()) {
+			if(head == null) {
+				head = (ListNode)stack.pop();
+				temp = head;
+			}else {
+				temp.setNext((ListNode)stack.pop());
+				temp = temp.getNext();
+			}
+
+		}
+		return head;
 	}
 
 }
